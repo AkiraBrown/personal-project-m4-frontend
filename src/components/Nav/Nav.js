@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg bg-secondary bg-gradient">
+    <nav className="navbar navbar-expand-lg bg-secondary bg-gradient sticky">
       <div className="container-fluid">
         <Link to={"/"} className="navbar-brand">
           Cars
@@ -24,10 +24,13 @@ function Nav() {
             <Link className="nav-link" to={"/"}>
               Home
             </Link>
-            {/* <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a> */}
+
+            <Link className="nav-link" to={"/about"}>
+              About This App
+            </Link>
+            <Link className="nav-link d-flex" to={"/new-car"}>
+              Create New Car
+            </Link>
           </div>
         </div>
       </div>

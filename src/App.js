@@ -7,6 +7,7 @@ const Home = React.lazy(() => import("./components/Home/Home.js"));
 const Edit = React.lazy(() => import("./components/EditPage/EditPage.js"));
 const NewCar = React.lazy(() => import("./components/NewCar/NewCar.js"));
 const ShowPage = React.lazy(() => import("./components/ShowPage/ShowPage.js"));
+const About = React.lazy(() => import("./components/About/About.js"));
 
 const Error = React.lazy(() => import("./components/Error/Error.js"));
 
@@ -21,7 +22,14 @@ function App() {
             <Route path={"/:id"} element={<ShowPage />} />
             <Route path={"/edit/:id"} element={<Edit />} />
             <Route path={"/new-car"} element={<NewCar />} />
+            <Route path={"/about"} element={<About />} />
             <Route path={"*"} element={<Error />} />
+            <Route
+              path={"/404"}
+              element={
+                <div className="alert alert-danger">404 Page Not Found</div>
+              }
+            />
           </Routes>
         </Router>
       </React.Suspense>
