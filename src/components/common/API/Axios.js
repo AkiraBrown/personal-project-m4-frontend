@@ -4,7 +4,7 @@ const AxiosInstance = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3003"
-      : "DEPLOY URL",
+      : "https://m4personalproject-ab.onrender.com",
   timeout: 50000,
 });
 

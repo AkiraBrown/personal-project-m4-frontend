@@ -6,8 +6,15 @@ a 'modal' appears to alert to the user and further details are presented on the 
 
 ### Links
 
+Github
+
 - Backend Repo (https://github.com/AkiraBrown/personal-project-m4-backend)
 - Frontend Repo (https://github.com/AkiraBrown/personal-project-m4-frontend)
+
+Live
+
+- Backend (https://m4personalproject-ab.onrender.com)
+- Frontend (https://m4-personalportfolio-ab.netlify.app/)
 
 ## Technologies
 
