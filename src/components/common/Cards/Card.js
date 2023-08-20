@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Card({ item }) {
   return (
-    <div className="card mb-3 bg-gradient bg-secondary" key={item.id}>
-      <div className="row g-0">
+    <div className="card mb-3 bg-gradient bg-secondary " key={item.id}>
+      <div className="row g-0 shadow">
         <div className="col-md-4">
           <img
             src={item.image_url}

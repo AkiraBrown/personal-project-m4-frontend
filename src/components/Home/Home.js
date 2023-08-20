@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  // useContext
+} from "react";
 import { getAllCars } from "../common/API/API";
 
 import Overlay from "../common/Overlay/Overlay";
 import Card from "../common/Cards/Card";
 import Sidebar from "../Sidebar/Sidebar";
 
-import { SidebarContext } from "../common/context/context";
+import {
+  SidebarContext,
+  //  ToastContext
+} from "../common/context/context";
 
 function Home() {
+  // const { toastArr, setToastArr } = useContext(ToastContext);
   const [carArr, setCarArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,13 +31,17 @@ function Home() {
     grabData();
   }, []);
 
+  const ScrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   const sideBarContextValue = {
     carMake,
     // selectBody,
     carSelection,
-    // carBody,
+    carBody,
     // selectColor,
-    // colorSelection,
+    colorSelection,
     setCarArr,
     setIsLoading,
     setCarMake,
@@ -76,6 +88,14 @@ function Home() {
             {carArr.map((item) => {
               return <Card item={item} key={item.id} />;
             })}
+          </div>
+          <div className="position-fixed bottom-0 end-0 mb-3 me-3">
+            <button
+              className="btn btn-primary py-2 d-flex align-items-center"
+              onClick={ScrollToTop}
+            >
+              &uarr;
+            </button>
           </div>
         </div>
       </Overlay>

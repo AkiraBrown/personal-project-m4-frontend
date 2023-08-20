@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { SidebarContext } from "../common/context/context";
 import { getCarMake, getAllCars } from "../common/API/API";
+import Toast from "../Toast/Toast";
 
 function Sidebar() {
   const {
-    carMake,
+    //carMake,
     // selectBody,
     carSelection,
     // carBody,
@@ -25,7 +26,7 @@ function Sidebar() {
       setIsLoading(true);
       //console.log(term);
       let result;
-      if (term === "") {
+      if (term === "All") {
         result = await getAllCars();
       } else {
         result = await getCarMake(term);
@@ -41,9 +42,9 @@ function Sidebar() {
   //function handleOnChange() {}
 
   return (
-    <div className="container-md col-4">
+    <div className="container-md col-4 ">
       <br />
-      <div className="container border rounded">
+      <div className="container border rounded shadow">
         <form className="form mb-3">
           <br />
           <label className="form-label">Car Make</label>
@@ -54,7 +55,7 @@ function Sidebar() {
               alterByCarMake(e.target.value);
             }}
           >
-            <option defaultValue={""}>{""}</option>
+            <option defaultValue={"All"}>{"All"}</option>
             {carSelection.map((item, index) => {
               return (
                 <option key={index} value={item}>
@@ -63,26 +64,10 @@ function Sidebar() {
               );
             })}
           </select>
-          {/* <label className="form-label">Car Color</label>
-          <select
-            className="form-select"
-            onChange={(e) => {
-              console.log(e.target.value);
-              //alterByCarMake(e.target.value);
-            }}
-          >
-            <option defaultValue={""}>{""}</option>
-            {colorSelection.map((item, index) => {
-              return (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select> */}
         </form>
         <div className="container">
           <p>You can filter by Car manufacturer with the dropdown above</p>
+          <Toast />
         </div>
       </div>
     </div>

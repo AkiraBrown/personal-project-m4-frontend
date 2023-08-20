@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Spinner from "./components/common/Spinner/Spinner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContext } from "./components/common/context/context";
 
 const Nav = React.lazy(() => import("./components/Nav/Nav.js"));
 const Home = React.lazy(() => import("./components/Home/Home.js"));
@@ -12,16 +13,54 @@ const About = React.lazy(() => import("./components/About/About.js"));
 const Error = React.lazy(() => import("./components/Error/Error.js"));
 
 function App() {
+  const [toastArr, setToastArr] = useState({
+    Method: "",
+    Status: "",
+    Name: "",
+  });
+  const ToastContextValue = {
+    toastArr,
+    setToastArr,
+  };
+
   return (
     <div className="App">
       <React.Suspense fallback={<Spinner />}>
         <Router>
           <Nav />
           <Routes>
-            <Route path={"/"} element={<Home />} />
-            <Route path={"/:id"} element={<ShowPage />} />
-            <Route path={"/edit/:id"} element={<Edit />} />
-            <Route path={"/new-car"} element={<NewCar />} />
+            <Route
+              path={"/"}
+              element={
+                <ToastContext.Provider value={ToastContextValue}>
+                  <Home />
+                </ToastContext.Provider>
+              }
+            />
+            <Route
+              path={"/:id"}
+              element={
+                <ToastContext.Provider value={ToastContextValue}>
+                  <ShowPage />
+                </ToastContext.Provider>
+              }
+            />
+            <Route
+              path={"/edit/:id"}
+              element={
+                <ToastContext.Provider value={ToastContextValue}>
+                  <Edit />
+                </ToastContext.Provider>
+              }
+            />
+            <Route
+              path={"/new-car"}
+              element={
+                <ToastContext.Provider value={ToastContextValue}>
+                  <NewCar />
+                </ToastContext.Provider>
+              }
+            />
             <Route path={"/about"} element={<About />} />
             <Route path={"*"} element={<Error />} />
             <Route
